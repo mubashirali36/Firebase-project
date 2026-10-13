@@ -8,8 +8,6 @@ export const useProducts = () => useContext(ProductsContext);
 export function ProductsProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  // one realtime listener shared by the whole app: admin edits show instantly on the shop
   useEffect(() => {
     const q = query(collection(db, "products"), orderBy("createdAt", "desc"));
     return onSnapshot(
